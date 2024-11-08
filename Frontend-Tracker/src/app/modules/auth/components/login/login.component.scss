@@ -1,0 +1,76 @@
+.highlight {
+    color: #4d4d4d; /* Cambia el color del texto */
+    font-weight: bold; /* Pone la palabra en negrita */
+  }
+  
+  .login-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+    }
+    
+    .login-container {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      
+    
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 60px;
+        font-weight: 700;
+      }
+    
+      .form-group {
+        margin-bottom: 15px;
+    
+    
+        input {
+          width: 100%;
+          height: 35px;
+          padding: 10px;
+          border: none;
+          font-size: 15px;
+          background-color: #ebebeb;
+          border-radius: 8px;
+        }
+      }
+    
+      
+    }
+    
+  
+    .buttonOwn {
+      text-decoration: none;
+      background-color: #1d1d1f;
+      border-radius: 0px;
+      color: white;
+      border: none;
+      padding-inline: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-align: center;
+      width: 70%;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      i {
+          color: white;
+      }
+  }
+  
+  .buttonOwn:hover {
+      transform: scale(1.02); /* Aumenta ligeramente el tamaño del botón */
+      background-color: #242426; /* Color más claro en hover */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.058); /* Añade una ligera sombra en hover */
+  }
+  
+  .underB{
+    color: #5c5c5c;
+    cursor: pointer;
+  }

@@ -1,0 +1,51 @@
+<form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="height">Altura (cm):</label>
+      <input id="height" formControlName="height" type="number" />
+    </div>
+  
+    <div>
+      <label for="weight">Peso (kg):</label>
+      <input id="weight" formControlName="weight" type="number" />
+    </div>
+  
+    <div>
+      <label for="birthDate">Fecha de Nacimiento:</label>
+      <input id="birthDate" formControlName="birthDate" type="date" />
+    </div>
+  
+    <div>
+      <label for="bodyFat">Porcentaje Graso (%):</label>
+      <input id="bodyFat" formControlName="bodyFat" type="number" />
+    </div>
+  
+    <div>
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" formControlName="sexo">
+        <option value="MASCULINO">Masculino</option>
+        <option value="FEMENINO">Femenino</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="activityLevel">Nivel de Actividad:</label>
+      <select id="activityLevel" formControlName="activityLevel">
+        <option value="UNO_A_DOS_DIAS_SEMANALES">1-2 días semanales</option>
+        <option value="TRES_A_CINCO_DIAS_SEMANALES">3-5 días semanales</option>
+        <option value="SIETE_DIAS_SEMANALES">7 días semanales</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="goal">Objetivo:</label>
+      <select id="goal" formControlName="goal">
+        <option value="DEFINICION">Definición</option>
+        <option value="GANANCIA_DE_MASA_MUSCULAR">Ganancia de masa muscular</option>
+        <option value="MANTENIMIENTO">Mantenimiento</option>
+        <option value="PERDIDA_DE_PESO">Pérdida de peso</option>
+      </select>
+    </div>
+  
+    <button type="submit">Guardar</button>
+  </form>
+  

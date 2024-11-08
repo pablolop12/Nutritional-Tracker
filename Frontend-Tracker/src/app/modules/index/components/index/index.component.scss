@@ -1,0 +1,90 @@
+
+
+.base{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+}
+
+h1{
+    font-weight: 700;
+    line-height: 1;
+}
+
+p{
+    font-weight: 500;
+}
+
+
+.title{
+    font-size: 80px;
+    span{
+        font-size: 80px;
+    }
+
+}
+
+
+.highlight {
+    color: #4d4d4d; /* Cambia el color del texto */
+    font-weight: bold; /* Pone la palabra en negrita */
+}
+
+
+.buttonHolder{
+    height: 100%;
+    padding-inline: 15%;
+}
+
+.buttonOwn {
+    text-decoration: none;
+    background-color: #1d1d1f;
+    border-radius: 0px;
+    color: white;
+    padding-inline: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 70%;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    i {
+        color: white;
+    }
+}
+
+.buttonOwn:hover {
+    transform: scale(1.024); /* Aumenta ligeramente el tamaño del botón */
+    background-color: #242426; /* Color más claro en hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.058); /* Añade una ligera sombra en hover */
+
+}
+
+.buttonOwn2 {
+    text-decoration: none;
+    background-color: #dadada;
+    border-radius: 0px;
+    color: #1d1d1f;
+    padding-inline: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 70%;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    i {
+        color: #1d1d1f;
+    }
+}
+
+.buttonOwn2:hover {
+    transform: scale(1.025); /* Aumenta ligeramente el tamaño del botón */
+    background-color: #eeeeee; /* Color más claro en hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.058); /* Añade una ligera sombra en hover */
+
+}
