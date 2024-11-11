@@ -27,11 +27,10 @@ public class UserDetailsService {
             throw new IllegalArgumentException("UserDetails must have a valid User associated.");
         }
 
-        // Carga el User desde la base de datos para asegurarse de que es persistente
+        // Carga el User desde la base de datos
         User user = userRepository.findById(userDetails.getUser().getId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Establece el usuario persistente en los detalles del usuario
         userDetails.setUser(user);
 
         // Calcular las necesidades nutricionales antes de guardar
