@@ -1,95 +1,31 @@
-label {
-  font-weight: 800;
-  color: #4d4d4d;
-  letter-spacing: 1px;
-}
-
-
-
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0, 0, 0, 0.234) 8%, rgba(8, 8, 8, 0.234) 92%, rgba(255,255,255,0) 100%);
-}
-
-.h-custom {
-  height: calc(100% - 73px);
-}
-
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
-}
-
-.hotFix {
-  padding-inline: 5%;
-}
-
-.text-divider {
-  font-weight: 900;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.329);
-}
-
-.progress-bar-container {
+/* Estilo para alinear los elementos en una sola línea */
+.macro-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  width: 100%;
-  padding: 0; /* Asegúrate de que no haya padding */
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 10px; /* Espacio entre los elementos */
+  margin-bottom: 10px; /* Espacio entre filas */
 }
 
-.progress-bar-row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+/* Estilo opcional para ajustar el ancho de cada elemento */
+.macro-name {
+  width: 100px; /* Ancho fijo o ajustable para los nombres de macro */
+  font-weight: bold;
 }
 
-.half-width {
-  width: 48%;
-}
-
-.full-width-md {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .full-width-md {
-    width: 100%;
-  }
-}
-
-.progress-bar-container label {
-  margin-right: 15px;
-  flex-shrink: 0;
-  min-width: 50px;
-  line-height: 1; /* Ajusta la altura de línea para evitar desplazamientos */
-}
-
-.progress-bar-container .progress {
-  flex-grow: 1;
-  margin-right: 10px;
+.progress {
+  flex: 1; /* Ocupa el espacio restante para la barra de progreso */
+  height: 18px; /* Ajusta la altura de la barra */
   background-color: #e0e0e0;
-  border-radius: 0px;
-  overflow: hidden;
-  height: 15px;
-  width: 100%;
-}
-
-.progress-bar-container span {
-  flex-shrink: 0;
-  min-width: 60px;
-  text-align: right;
-  line-height: 1; /* Ajusta la altura de línea para evitar desplazamientos */
+  border-radius: 50px;
 }
 
 .progress-bar {
-  background-color: #76c7c0;
   height: 100%;
-  transition: width 0.3s ease-in-out;
+  background-color: #76c7c0; /* Color de la barra de progreso */
+  border-radius: 50px;
 }
 
+.macro-values {
+  width: 80px; /* Ancho fijo o ajustable para los valores */
+  text-align: right;
+}

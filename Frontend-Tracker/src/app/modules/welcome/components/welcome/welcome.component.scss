@@ -1,0 +1,123 @@
+/* Estilos generales */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 6px;
+        font-size: 60px;
+        font-weight: 800;
+        color: black;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.634);
+      }
+}
+
+/* Animación de FadeIn */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.step-container,
+.step-container h1,
+.step-container .input-container,
+.step-container button {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Estilos de los campos de entrada */
+.input-container {
+    position: relative;
+    margin-top: 15px;
+}
+
+.input-container .icon {
+    position: absolute;
+    width: 40px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+}
+
+.input-container input,
+.input-container select {
+    width: 100%;
+    padding: 7px 10px;
+    padding-left: 35px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    transition: background-color 0.3s ease, border-color 0.3s ease-in-out;
+}
+
+.input-container input:focus,
+.input-container select:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.726); 
+}
+
+/* Botón de paso */
+.step{
+    border-radius: 50px;
+    padding: 5px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.123);
+    color: rgba(0, 0, 0, 0.588);
+}
+
+
+/* Botón de Guardar */
+.inicio {
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: #131313;
+    color: white;
+    border: black 1px solid;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-right: 45px;
+    transition: all 0.3s ease;
+}
+
+.inicio .flecha {
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 20px;
+}
+
+.inicio:hover {
+    background-color: #1d1d1d;
+}
+
+.inicio:hover .flecha {
+    transform: translateX(7px);
+}
+
+/* Enlace subrayado */
+.underB {
+    color: #000000a5;
+    cursor: pointer;
+}

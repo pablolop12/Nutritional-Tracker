@@ -1,17 +1,38 @@
-<div class="container-wrapper">
-
-    
+<div class="container-wrapper" style="margin-bottom: 94px;">
     <div class="container">
-        
-        <div class="boxes" style="margin-top: 80px;">
-            <div class="mb-4 d-flex align-items-center justify-content-between">
-                <h1 class="text-header m-0">Tu <span class="highlight">dashboard</span>.</h1><i routerLink="/history" class="fa-solid fa-clock-rotate-left"></i>
+        <div class="row" style="margin-top: 110px;">
+            <div class="col-lg-6">
+                <div class="progressbars">
+                    <app-progressbars></app-progressbars>
+                </div>
+                <div class="estadisticas">
+                    <section class="parametro-container">
+                        <div class="parametro">
+                            <div class="dato-decimal">
+                                <span class="dato">23</span><span class="decimal">2</span>
+                            </div>
+                            <span class="medicion"><i class="fa-solid fa-weight-scale"></i>IMC</span>
+                        </div>
+                        <div class="parametro">
+                            <div class="dato-decimal">
+                                <span class="dato">37</span><span class="decimal">8</span>
+                            </div>
+                            <span class="medicion"><i class="fa-solid fa-hand-fist"></i>SMMI</span>
+                        </div>
+                        <div class="parametro">
+                            <div class="dato-decimal">
+                                <span class="dato">15</span><span class="decimal">2</span>
+                            </div>
+                            <span class="medicion"><i class="fa-solid fa-scale-unbalanced-flip"></i>BFP</span>
+                        </div>
+                    </section>
+                </div>
             </div>
-            <app-progressbars></app-progressbars>
+            <div class="col-lg-6">
+                <div class="menu p-3">
+                    <app-menu></app-menu>
+                </div>
+            </div>
         </div>
-
-
     </div>
-
-    <app-menu></app-menu>
 </div>

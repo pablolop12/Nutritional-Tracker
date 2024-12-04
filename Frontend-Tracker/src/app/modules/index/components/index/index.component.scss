@@ -1,90 +1,76 @@
-
-
-.base{
-    background-color: rgb(255, 255, 255);
-    height: 100vh;
-}
-
-h1{
-    font-weight: 700;
-    line-height: 1;
-}
-
-p{
-    font-weight: 500;
-}
-
-
-.title{
+h1 {
     font-size: 80px;
-    span{
-        font-size: 80px;
-    }
-
+    text-align: center;
+    font-weight: 800;
+    max-width: 800px;
+    line-height: 70px;
+    color: #000000;
 }
 
-
-.highlight {
-    color: #4d4d4d; /* Cambia el color del texto */
-    font-weight: bold; /* Pone la palabra en negrita */
-}
-
-
-.buttonHolder{
-    height: 100%;
-    padding-inline: 15%;
-}
-
-.buttonOwn {
+.registro {
+    padding: 10px 25px;
     text-decoration: none;
-    background-color: #1d1d1f;
-    border-radius: 0px;
+    border-radius: 50px;
+    background-color: #131313;
     color: white;
-    padding-inline: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-align: center;
-    width: 70%;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    i {
-        color: white;
+    border: black 1px solid;
+    display: inline-flex;
+    align-items: center;
+    position: relative; 
+    padding-right: 45px; 
+    transition: all 0.3s ease; 
+
+    .flecha {
+        transition: transform 0.3s ease; 
+        position: absolute; 
+        right: 20px; 
     }
 }
 
-.buttonOwn:hover {
-    transform: scale(1.024); /* Aumenta ligeramente el tamaño del botón */
-    background-color: #242426; /* Color más claro en hover */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.058); /* Añade una ligera sombra en hover */
-
+.registro:hover {
+    background-color: #1d1d1d;
 }
 
-.buttonOwn2 {
-    text-decoration: none;
-    background-color: #dadada;
-    border-radius: 0px;
-    color: #1d1d1f;
-    padding-inline: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-align: center;
-    width: 70%;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+.registro:hover .flecha {
+    transform: translateX(7px); 
+}
+
+.sesion {
+    color: #000000a5;
     cursor: pointer;
-    i {
-        color: #1d1d1f;
+}
+
+
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
     }
 }
 
-.buttonOwn2:hover {
-    transform: scale(1.025); /* Aumenta ligeramente el tamaño del botón */
-    background-color: #eeeeee; /* Color más claro en hover */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.058); /* Añade una ligera sombra en hover */
+/* Estilos de animación para cada sección */
+.contenidoHero .lettering, 
+.contenidoHero .botonera, 
+.contenidoHero .sesion {
+    opacity: 0; /* Oculto inicialmente */
+    animation: fadeInUp 0.5s ease forwards; /* Duración y efecto */
+}
 
+/* Secuencia de la animación */
+.contenidoHero .lettering {
+    animation-delay: 0.1s; /* Aparece primero */
+}
+
+.contenidoHero .botonera {
+    animation-delay: 0.3s; /* Aparece después */
+}
+
+.contenidoHero .sesion {
+    animation-delay: 0.5s; /* Aparece al final */
 }

@@ -1,51 +1,82 @@
-<form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="height">Altura (cm):</label>
-      <input id="height" formControlName="height" type="number" />
-    </div>
-  
-    <div>
-      <label for="weight">Peso (kg):</label>
-      <input id="weight" formControlName="weight" type="number" />
-    </div>
-  
-    <div>
-      <label for="birthDate">Fecha de Nacimiento:</label>
-      <input id="birthDate" formControlName="birthDate" type="date" />
-    </div>
-  
-    <div>
-      <label for="bodyFat">Porcentaje Graso (%):</label>
-      <input id="bodyFat" formControlName="bodyFat" type="number" />
-    </div>
-  
-    <div>
-      <label for="sexo">Sexo:</label>
-      <select id="sexo" formControlName="sexo">
-        <option value="MASCULINO">Masculino</option>
-        <option value="FEMENINO">Femenino</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="activityLevel">Nivel de Actividad:</label>
-      <select id="activityLevel" formControlName="activityLevel">
-        <option value="UNO_A_DOS_DIAS_SEMANALES">1-2 días semanales</option>
-        <option value="TRES_A_CINCO_DIAS_SEMANALES">3-5 días semanales</option>
-        <option value="SIETE_DIAS_SEMANALES">7 días semanales</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="goal">Objetivo:</label>
-      <select id="goal" formControlName="goal">
-        <option value="DEFINICION">Definición</option>
-        <option value="GANANCIA_DE_MASA_MUSCULAR">Ganancia de masa muscular</option>
-        <option value="MANTENIMIENTO">Mantenimiento</option>
-        <option value="PERDIDA_DE_PESO">Pérdida de peso</option>
-      </select>
-    </div>
-  
-    <button type="submit">Guardar</button>
-  </form>
-  
+<div class="login-page">
+  <div class="login-container">
+    <h1>Empecemos</h1>
+    <h2>Rellena los siguientes datos para completar tu perfil y personalizar tus objetivos</h2>
+    <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+      <!-- Paso 1: Pregunta Sexo y Fecha de Nacimiento -->
+      <div *ngIf="currentStep === 1" class="step-container">
+          <div class="input-container">
+              <i class="icon fa-solid fa-venus-mars"></i>
+              <select id="sexo" formControlName="sexo">
+                  <option value="" disabled selected hidden>Sexo</option> <!-- Placeholder -->
+                  <option value="MASCULINO">Masculino</option>
+                  <option value="FEMENINO">Femenino</option>
+              </select>
+          </div>
+    
+          <div class="input-container">
+              <i class="icon fa-solid fa-calendar"></i>
+              <input id="birthDate" formControlName="birthDate" type="date" placeholder="Fecha de Nacimiento" />
+          </div>
+    
+          <div class="d-flex flex-row-reverse">
+            <button type="button" class="step mt-4 d-flex align-items-center" (click)="nextStep()">Siguiente <i class="ms-2 fa-solid fa-angle-right"></i></button>
+          </div>
+      </div>
+    
+      <!-- Paso 2: Pregunta Altura, Peso y Porcentaje Graso -->
+      <div *ngIf="currentStep === 2" class="step-container">
+          <div class="input-container">
+              <i class="icon fa-solid fa-ruler-vertical"></i>
+              <input id="height" formControlName="height" type="number" placeholder="Altura (cm)" />
+          </div>
+    
+          <div class="input-container">
+              <i class="icon fa-solid fa-weight-hanging"></i>
+              <input id="weight" formControlName="weight" type="number" placeholder="Peso (kg)" />
+          </div>
+    
+          <div class="input-container">
+              <i class="icon fa-solid fa-percent"></i>
+              <input id="bodyFat" formControlName="bodyFat" type="number" placeholder="Porcentaje Graso (%)" />
+          </div>
+    
+          <div class="d-flex justify-content-between">
+            <button type="button" class="step mt-4 d-flex align-items-center" (click)="prevStep()"><i class="me-2 fa-solid fa-angle-left"></i> Atrás</button>
+            <button type="button" class="step mt-4 d-flex align-items-center" (click)="nextStep()">Siguiente <i class="ms-2 fa-solid fa-angle-right"></i></button>
+          </div>
+      </div>
+    
+      <!-- Paso 3: Pregunta Nivel de Actividad y Objetivo -->
+      <div *ngIf="currentStep === 3" class="step-container">
+          <div class="input-container">
+              <i class="icon fa-solid fa-running"></i>
+              <select id="activityLevel" formControlName="activityLevel">
+                  <option value="" disabled selected hidden>Nivel de Actividad</option> <!-- Placeholder -->
+                  <option value="UNO_A_DOS_DIAS_SEMANALES">1-2 días semanales</option>
+                  <option value="TRES_A_CINCO_DIAS_SEMANALES">3-5 días semanales</option>
+                  <option value="SIETE_DIAS_SEMANALES">7 días semanales</option>
+              </select>
+          </div>
+    
+          <div class="input-container">
+              <i class="icon fa-solid fa-bullseye"></i>
+              <select id="goal" formControlName="goal">
+                  <option value="" disabled selected hidden>Objetivo</option> <!-- Placeholder -->
+                  <option value="DEFINICION">Definición</option>
+                  <option value="GANANCIA_DE_MASA_MUSCULAR">Ganancia de masa muscular</option>
+                  <option value="MANTENIMIENTO">Mantenimiento</option>
+                  <option value="PERDIDA_DE_PESO">Pérdida de peso</option>
+              </select>
+          </div>
+    
+          <div class="d-flex justify-content-between">
+            <button type="button" class="step mt-4 d-flex align-items-center" (click)="prevStep()"><i class="me-2 fa-solid fa-angle-left"></i> Atrás</button>
+            <button type="submit" class="mt-4 inicio shadow"><i class="fa-solid fa-feather" style="margin-inline-end: 10px;"></i>Guardar<i
+              class="bi bi-chevron-right flecha"></i></button>
+          </div>
+      </div>
+    </form>
+    
+  </div>
+</div>

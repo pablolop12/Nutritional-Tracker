@@ -12,18 +12,19 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class WelcomeComponent implements OnInit {
   welcomeForm: FormGroup;
-  userId: number | null = null; // Initialize userId as null
+  userId: number | null = null;
+  currentStep: number = 1; // Paso inicial
 
   constructor(
     private fb: FormBuilder,
     private nutritionService: NutritionService,
     private router: Router,
-    private authService: AuthService // Inject the authentication service
+    private authService: AuthService
   ) {
     this.welcomeForm = this.fb.group({
       height: ['', [Validators.required, Validators.min(1)]],
       weight: ['', [Validators.required, Validators.min(1)]],
-      birthDate: ['', [Validators.required]], // This field should be of type 'date'
+      birthDate: ['', [Validators.required]],
       bodyFat: ['', [Validators.required, Validators.min(0)]],
       sexo: ['', [Validators.required]],
       activityLevel: ['', [Validators.required]],
@@ -32,23 +33,21 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Try to get the userId directly from the JWT token
-    const token = localStorage.getItem('token'); // Ensure to use the correct name of the token in your localStorage
+    const token = localStorage.getItem('token');
 
     if (token) {
       try {
-        const decodedToken: any = jwtDecode(token); // Decode the token using the correct function
-        this.userId = decodedToken.userId; // Extract the userId from the decoded token
+        const decodedToken: any = jwtDecode(token);
+        this.userId = decodedToken.userId;
       } catch (error) {
         console.error('Error decoding JWT token:', error);
       }
     }
 
-    // If unable to get userId from the token, get user details
     if (!this.userId) {
       this.authService.getUserDetails().subscribe(
         (response) => {
-          this.userId = response.id; // Retrieve the logged-in user's ID
+          this.userId = response.id;
         },
         (error) => {
           console.error('Error getting user details', error);
@@ -57,22 +56,32 @@ export class WelcomeComponent implements OnInit {
     }
   }
 
+  // Métodos para cambiar de paso
+  nextStep(): void {
+    if (this.currentStep < 3) {
+      this.currentStep++;
+    }
+  }
+
+  prevStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
   onSubmit(): void {
     if (this.welcomeForm.valid && this.userId !== null) {
-      console.log('Valid form, sending data:', this.welcomeForm.value);
-
-      // Modify the payload to include the user id
       const payload = {
         ...this.welcomeForm.value,
         user: {
-          id: this.userId // Use the recovered user ID
+          id: this.userId
         }
       };
 
       this.nutritionService.calculateMacros(payload).subscribe(
         (response) => {
           console.log('User details saved successfully', response);
-          this.router.navigate(['/dashboard']); // Redirect to the dashboard or home page
+          this.router.navigate(['/dashboard']);
         },
         (error) => {
           console.error('Error saving user details', error);

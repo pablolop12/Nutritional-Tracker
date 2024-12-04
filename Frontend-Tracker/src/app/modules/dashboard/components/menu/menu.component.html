@@ -1,32 +1,26 @@
-<div class="menu-wrapper">
-  <div class="menu-header" [class.active]="menuOpen" (click)="toggleMenu()">
-    <div class="slider"></div>
+<div class="menu-content">
+  <div class="input-container">
+    <i class="fa-solid fa-magnifying-glass icon"></i>
+    <input placeholder="Buscar un alimento ...">
   </div>
-  <div class="menu-content" [class.open]="menuOpen">
-    <div class="filtering mb-3 mt-3">
-      <div class="d-flex align-items-center">
-        <input class="text-center" placeholder="Buscar en tus comidas"><i routerLink="/food/new" class="fa-solid fa-plus ms-3"></i>
-      </div>
-      <div class="d-flex mt-3 filtersCont mb-4">
-        <!-- Aquí van los filtros -->
-        <div class="filter"><i class="fa-solid fa-drumstick-bite me-1"></i> Carnes</div>
-        <div class="filter"><i class="fa-solid fa-wheat-awn me-1"></i> Hidratos</div>
-        <div class="filter"><i class="fa-solid fa-carrot me-1"></i> Vegetales</div>
-        <div class="filter"><i class="fa-solid fa-apple-alt me-1"></i> Frutas</div>
-        <div class="filter"><i class="fa-solid fa-fish me-1"></i> Pescados</div>
-        <div class="filter"><i class="fa-solid fa-cheese me-1"></i> Lácteos</div>
-        <div class="filter"><i class="fa-solid fa-bread-slice me-1"></i> Pan</div>
-      </div>
-    </div>
-    <div class="square-container">
-      <div *ngFor="let item of foodItems" class="food-item" (click)="onFoodItemClick(item)">
-        <div class="food-item-content">
-          <img [src]="item.imageUrl" alt="{{ item.name }}" class="food-item-image">
-          <div class="food-item-details">
-            <h3>{{ item.name }}</h3>
-          </div>
+  <div class="filtros">
+    <div class="filter"><i class="fa-solid fa-drumstick-bite me-1"></i> Carnes</div>
+    <div class="filter"><i class="fa-solid fa-fish me-1"></i> Pescados</div>
+    <div class="filter"><i class="fa-solid fa-wheat-awn me-1"></i> Hidratos</div>
+    <div class="filter"><i class="fa-solid fa-carrot me-1"></i> Vegetales</div>
+    <div class="filter"><i class="fa-solid fa-apple-alt me-1"></i> Frutas</div>
+    <div class="filter"><i class="fa-solid fa-cheese me-1"></i> Lácteos</div>
+  </div>
+
+  <div>
+    <div *ngFor="let item of foodItems" class="food-item" (click)="onFoodItemClick(item)">
+      <div class="food-item-content">
+        <img [src]="item.imageUrl" alt="{{ item.name }}" class="food-item-image">
+        <div class="food-item-details">
+          <h3>{{ item.name }}</h3>
         </div>
       </div>
     </div>
   </div>
+
 </div>

@@ -1,0 +1,113 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .login-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+  
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 60px;
+      font-weight: 800;
+      color: black;
+    }
+  }
+  
+  .input-container {
+    position: relative;
+    
+  }
+  
+  .input-container .icon {
+    position: absolute;
+    width: 40px;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none; 
+  
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 7px 10px;
+    padding-left: 35px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.233); 
+    transition: background-color 0.3s ease, border-color 0.3s ease-in-out; 
+  }
+  
+  .input-container input:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.726); 
+  }
+  
+  
+  
+  
+  
+  
+  //Botón de inicio de sesión
+  .inicio {
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: #131313;
+    color: white;
+    border: black 1px solid;
+    display: inline-flex;
+    align-items: center;
+    position: relative; 
+    padding-right: 45px; 
+    transition: all 0.3s ease; 
+  
+    .flecha {
+        transition: transform 0.3s ease; 
+        position: absolute; 
+        right: 20px; 
+    }
+  }
+  
+  .inicio:hover {
+    background-color: #1d1d1d;
+  }
+  
+  .inicio:hover .flecha {
+    transform: translateX(7px); 
+  }
+  
+  
+  .underB {
+    color: #000000a5;
+    cursor: pointer;
+  }
+  
+  
+  /* Animación de FadeIn */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .login-page .login-container,
+  .login-page .login-container h1,
+  .login-page .login-container form,
+  .login-page .login-container .form-group,
+  .login-page .login-container .buttonOwn,
+  .login-page .login-container .text-center a {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+  }

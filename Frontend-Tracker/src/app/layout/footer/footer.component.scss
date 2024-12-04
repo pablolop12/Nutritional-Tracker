@@ -1,0 +1,31 @@
+footer {
+    width: 90%;
+    margin: auto;
+    color: #353535;
+    position: fixed;
+    z-index: 10;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    backdrop-filter: blur(4px);
+}
+
+
+.icon{
+    color: rgb(254, 85, 70);
+}
+
+
+.navLink{
+    text-decoration: none;
+    color: #353535;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Para transiciones suaves */
+}
+
+.navLink:hover{
+    color: #ffffff;
+}

@@ -77,11 +77,14 @@ export class ProgressbarsComponent implements OnInit {
   }
 
   getUserIdFromToken(): number {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken: any = JSON.parse(atob(token.split('.')[1]));
-      return decodedToken.userId;
+    if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decodedToken: any = JSON.parse(atob(token.split('.')[1]));
+        return decodedToken.userId;
+      }
     }
     return 0;
   }
+  
 }

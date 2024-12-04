@@ -1,19 +1,25 @@
 <div class="login-page">
   <div class="login-container">
-    <h1>Hola, de <span class="highlight">nuevo</span>.</h1>
+    <h1>Hola de nuevo</h1>
+    
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input id="email" formControlName="email" type="email" class="form-control" placeholder="Correo electrónico">
+      <div class="input-container">
+        <i class="icon fa-solid fa-at"></i>
+        <input id="email" formControlName="email" type="email" placeholder="Correo electrónico">
       </div>
-
-      <div class="form-group">
-        <input id="password" formControlName="password" type="password" class="form-control" placeholder="Contraseña">
+      <div class="input-container mt-3">
+        <i class="icon fa-solid fa-lock"></i>
+        <input id="password" formControlName="password" type="password" placeholder="Contraseña">
       </div>
-
-      <button type="submit" class="buttonOwn w-100 mt-3">INICIAR SESIÓN</button>
-      <div class="text-center mt-1">
-        <a class="text underB" href="/auth/register">¿No tienes cuenta? Registrate aquí</a>
+      <div class="text-center">
+        <button type="submit" class="inicio
+         mt-4 shadow"><i class="fa-solid fa-right-to-bracket" style="margin-inline-end: 10px;"></i>Iniciar sesión<i
+            class="bi bi-chevron-right flecha"></i></button>
       </div>
     </form>
+
+    <div class="text-center mt-3">
+      <a class="text underB" href="/auth/register">¿No tienes cuenta? Registrate aquí</a>
+    </div>
   </div>
 </div>

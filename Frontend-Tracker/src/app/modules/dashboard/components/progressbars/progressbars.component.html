@@ -1,17 +1,20 @@
 <div *ngIf="userDetails">
-  <div *ngFor="let macro of ['calories', 'fats', 'proteins', 'carbs', 'saturatedFats', 'sugars']">
-    <p>{{ macro | titlecase }} - {{ consumedNutrients[macro] | number:'1.0-0' }} / {{ userDetails[macro] }} g</p>
+
+
+  <div *ngFor="let macro of ['calories', 'proteins', 'carbs', 'fats', 'saturatedFats', 'sugars'] " class="macro-row d-flex align-items-center mb-4">
+    <p class="macro-name m-0">{{ macro | titlecase }}</p>
+
     <div class="progress">
-      <div
-        class="progress-bar"
-        role="progressbar"
+      <div class="progress-bar" role="progressbar"
         [style.width.%]="(consumedNutrients[macro] / userDetails[macro]) * 100"
-        [attr.aria-valuenow]="consumedNutrients[macro]"
-        [attr.aria-valuemin]="0"
-        [attr.aria-valuemax]="userDetails[macro]"
-      ></div>
+        [attr.aria-valuenow]="consumedNutrients[macro]" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails[macro]">
+      </div>
     </div>
-  </div>
+
+    <p class="macro-values m-0">{{ consumedNutrients[macro] | number:'1.0-0' }} / {{ userDetails[macro] }} g</p>
 </div>
 
 
+
+</div>

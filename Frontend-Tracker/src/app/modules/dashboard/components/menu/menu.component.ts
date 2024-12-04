@@ -18,9 +18,7 @@ export class MenuComponent implements OnInit {
     this.loadUserFoods();
   }
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
+
 
   loadUserFoods() {
     this.foodService.getFoodsByUser().subscribe(
