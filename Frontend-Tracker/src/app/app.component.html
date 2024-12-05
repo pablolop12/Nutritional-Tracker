@@ -1,5 +1,22 @@
 <div class="site">
+    <div class="warning text-center">
+        <i class="fa-solid fa-gears me-2"></i><strong>¡Atención!</strong> el backend y la base de datos están siendo alojados en un servidor, por
+        lo que <strong>la web no está en funcionamiento</strong>.
+    </div>
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
 </div>
+
+<style>
+    .warning {
+        /*
+        Verde: #3c8a56
+        Rojo:
+        Amarillo: 
+        */
+        background-color: #be3c3c;
+        color: white;
+        padding: 5px;
+    }
+</style>
