@@ -6,6 +6,16 @@ nav {
   z-index: 1000; /* Superponer a todo*/
 }
 
+@media (max-width: 914px) {
+  nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Superponer a todo*/
+  }
+}
+
 
 .logo{
     font-weight: 900;
