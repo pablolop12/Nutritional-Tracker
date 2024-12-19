@@ -1,11 +1,19 @@
+.index-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+  }
+  
 
 
+  
 h1 {
-    font-size: 90px;
+    font-size: clamp(60px, 5vw, 90px); /* Escala entre 2rem y 90px */
+    line-height: clamp(60px, 6vw, 80px); /* Escala proporcional */
     text-align: center;
     font-weight: 800;
     max-width: 880px;
-    line-height: 80px;
     color: #000000;
 
     span{
