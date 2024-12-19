@@ -11,11 +11,17 @@
     </div>
   </div>
   <div class="filtros mt-2">
+    <div class="filter" [class.selected]="selectedFilter === ''" (click)="filterFoodsByType('')">
+      <i class="fa-solid fa-list"></i> Todos
+    </div>
     <div class="filter" [class.selected]="selectedFilter === 'Carne'" (click)="filterFoodsByType('Carne')">
       <i class="fa-solid fa-drumstick-bite me-1"></i> Carnes
     </div>
     <div class="filter" [class.selected]="selectedFilter === 'Pescado'" (click)="filterFoodsByType('Pescado')">
       <i class="fa-solid fa-fish me-1"></i> Pescados
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Hidrato'" (click)="filterFoodsByType('Hidrato')">
+      <i class="fa-solid fa-wheat-awn me-1"></i> Hidratos
     </div>
     <div class="filter" [class.selected]="selectedFilter === 'Vegetal'" (click)="filterFoodsByType('Vegetal')">
       <i class="fa-solid fa-carrot me-1"></i> Vegetales
@@ -23,21 +29,16 @@
     <div class="filter" [class.selected]="selectedFilter === 'Fruta'" (click)="filterFoodsByType('Fruta')">
       <i class="fa-solid fa-apple-alt me-1"></i> Frutas
     </div>
-    <div class="filter" [class.selected]="selectedFilter === 'Hidrato'" (click)="filterFoodsByType('Hidrato')">
-      <i class="fa-solid fa-wheat-awn me-1"></i> Hidratos
-    </div>
     <div class="filter" [class.selected]="selectedFilter === 'Lacteo'" (click)="filterFoodsByType('Lacteo')">
       <i class="fa-solid fa-cheese me-1"></i> Lácteos
     </div>
-    <div class="filter" [class.selected]="selectedFilter === 'Pan'" (click)="filterFoodsByType('Pan')">
-      <i class="fa-solid fa-bread-slice me-1"></i> Pan
+    <div class="filter" [class.selected]="selectedFilter === 'Suplemento'" (click)="filterFoodsByType('Pan')">
+      <i class="fa-solid fa-bread-slice me-1"></i> Suplementos
     </div>
     <div class="filter" [class.selected]="selectedFilter === 'Otros'" (click)="filterFoodsByType('Otros')">
       <i class="fa-solid fa-ellipsis-h me-1"></i> Otros
     </div>
-    <div class="filter" [class.selected]="selectedFilter === ''" (click)="filterFoodsByType('')">
-      <i class="fa-solid fa-list"></i> Todos
-    </div>
+    
   </div>
 
 
