@@ -10,5 +10,7 @@ import com.pablo.nutritional_tracker.entity.UserDetails;
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 	Optional<UserDetails> findByUser(User user);
     Optional<UserDetails> findByUserId(Long userId);
+    Optional<UserDetails> findByUser_Email(String email);
+
 
 }

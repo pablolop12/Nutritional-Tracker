@@ -2,8 +2,8 @@
 .macro-row {
   display: flex;
   align-items: center; /* Centra verticalmente los elementos */
-  gap: 10px; /* Espacio entre los elementos */
-  margin-bottom: 10px; /* Espacio entre filas */
+  gap: 0px; /* Espacio entre los elementos */
+  margin-bottom: 0px; /* Espacio entre filas */
 }
 
 /* Estilo opcional para ajustar el ancho de cada elemento */
@@ -15,13 +15,13 @@
 .progress {
   flex: 1; /* Ocupa el espacio restante para la barra de progreso */
   height: 18px; /* Ajusta la altura de la barra */
-  background-color: #e0e0e0;
+  background-color: rgb(224, 224, 224);
   border-radius: 50px;
 }
 
 .progress-bar {
   height: 100%;
-  background-color: #76c7c0; /* Color de la barra de progreso */
+  background-color: rgba(0, 0, 0, 0.801);
   border-radius: 50px;
 }
 

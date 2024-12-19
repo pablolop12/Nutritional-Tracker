@@ -17,28 +17,34 @@ public class UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+    
 
     @Autowired
     private NutritionCalculatorService nutritionCalculatorService;
 
     public UserDetails saveUserDetails(UserDetails userDetails) {
-        // Verifica si el objeto User está presente y es válido
+        return saveUserDetails(userDetails, false); // Por defecto, no recalcula los macros
+    }
+
+    public UserDetails saveUserDetails(UserDetails userDetails, boolean resetMacros) {
+        System.out.println("Detalles del usuario recibidos: " + userDetails);
+
         if (userDetails.getUser() == null || userDetails.getUser().getId() == null) {
-            throw new IllegalArgumentException("UserDetails must have a valid User associated.");
+            throw new IllegalArgumentException("El usuario asociado no es válido.");
         }
 
-        // Carga el User desde la base de datos
-        User user = userRepository.findById(userDetails.getUser().getId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (resetMacros) {
+            System.out.println("### Recalculando macros automáticamente");
+            nutritionCalculatorService.calculateDailyNeeds(userDetails);
+        }
 
-        userDetails.setUser(user);
+        UserDetails savedDetails = userDetailsRepository.save(userDetails);
+        System.out.println("Detalles del usuario guardados: " + savedDetails);
 
-        // Calcular las necesidades nutricionales antes de guardar
-        nutritionCalculatorService.calculateDailyNeeds(userDetails);
-
-        // Guardar los detalles del usuario
-        return userDetailsRepository.save(userDetails);
+        return savedDetails;
     }
+
+
 
     public Optional<UserDetails> findUserDetailsById(Long id) {
         return userDetailsRepository.findById(id);
@@ -51,4 +57,13 @@ public class UserDetailsService {
     public Optional<UserDetails> findUserDetailsByUserId(Long userId) {
         return userDetailsRepository.findByUserId(userId);
     }
+    
+ // Método para buscar los detalles de usuario por email
+    public Optional<UserDetails> findUserDetailsByEmail(String email) {
+        return userDetailsRepository.findByUser_Email(email);
+    }
+    
+    
+    
+    
 }

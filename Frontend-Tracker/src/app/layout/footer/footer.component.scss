@@ -1,3 +1,14 @@
+.footerHolder{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 77%, rgba(255,255,255,0.5438550420168067) 89%, rgba(0,212,255,0) 100%);
+    height: 76px;
+    position: fixed;
+    z-index: 10;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+}
+
 footer {
     width: 90%;
     margin: auto;
@@ -9,7 +20,6 @@ footer {
     right: 0;
     padding-top: 20px;
     padding-bottom: 20px;
-    backdrop-filter: blur(4px);
 }
 
 
@@ -20,12 +30,12 @@ footer {
 
 .navLink{
     text-decoration: none;
-    color: #353535;
-    font-weight: 400;
+    color: #4e4e4e;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease; /* Para transiciones suaves */
 }
 
 .navLink:hover{
-    color: #ffffff;
+    color: #000000;
 }

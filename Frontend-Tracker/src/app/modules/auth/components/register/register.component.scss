@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
   }
   
   .login-container {
@@ -49,10 +49,8 @@
     outline: none;
     border-color: rgba(0, 0, 0, 0.726); 
   }
-  
-  
-  
-  
+
+
   
   
   //Botón de inicio de sesión

@@ -1,38 +1,83 @@
-<div class="container-wrapper" style="margin-bottom: 94px;">
+<div class="container-wrapper">
     <div class="container">
-        <div class="row" style="margin-top: 110px;">
-            <div class="col-lg-6">
-                <div class="progressbars">
-                    <app-progressbars></app-progressbars>
+
+        <div class="barsHeader mb-2 mt-4 d-flex justify-content-between">
+            <div class="d-flex">
+                <div class="buttonP me-2" routerLink="/profile">
+                    <i class="fa-solid fa-user me-2"></i>
+                    {{ userDetails?.firstName || 'Usuario' }} {{ userDetails?.lastName || '' }}
                 </div>
+                <div class="buttonP" (click)="logout()" style="cursor: pointer;">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </div>
+            </div>
+            <div >
+                <div class="buttonP" routerLink="/history"><i  class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+        </div>
+        <!-- Bloque Progressbars -->
+        <div class="progressbars mt-3 mb-4 fade-in-up delay-1">
+            
+            <app-progressbars></app-progressbars>
+        </div>
+
+        <div class="row">
+            <!-- Bloque estadísticas -->
+            <div class="col-lg-4 col-12 fade-in-up delay-2">
                 <div class="estadisticas">
                     <section class="parametro-container">
-                        <div class="parametro">
+
+                        <div class="parametro fade-in-up delay-3 g-2">
                             <div class="dato-decimal">
-                                <span class="dato">23</span><span class="decimal">2</span>
+                                <span class="dato">{{ imc | number: '1.0-0' }}</span>
+                                <span class="decimal">{{ imc | number: '1.1-1' | slice: -1 }}</span>
                             </div>
-                            <span class="medicion"><i class="fa-solid fa-weight-scale"></i>IMC</span>
+                            <span class="medicion">
+                                <i class="fa-solid fa-gauge-simple-high"></i>IMC
+                                <span class="status-circle" [class]="getHealthStatus(imc, 'imc')"></span>
+                            </span>
                         </div>
-                        <div class="parametro">
+
+                        <div class="parametro fade-in-up delay-3">
                             <div class="dato-decimal">
-                                <span class="dato">37</span><span class="decimal">8</span>
+                                <span class="dato">{{ bfp | number: '1.0-0' }}</span>
+                                <span class="decimal">{{ bfp | number: '1.1-1' | slice: -1 }}</span>
                             </div>
-                            <span class="medicion"><i class="fa-solid fa-hand-fist"></i>SMMI</span>
+                            <span class="medicion">
+                                <i class="fa-solid fa-scale-unbalanced-flip"></i>PGC
+                                <span class="status-circle" [class]="getHealthStatus(bfp, 'bfp')"></span>
+                            </span>
                         </div>
-                        <div class="parametro">
+
+                        <div class="parametro fade-in-up delay-4">
                             <div class="dato-decimal">
-                                <span class="dato">15</span><span class="decimal">2</span>
+                                <span class="dato">{{ smmKg | number: '1.0-0' }}</span>
+                                <span class="decimal">{{ smmKg | number: '1.1-1' | slice: -1 }}</span>
                             </div>
-                            <span class="medicion"><i class="fa-solid fa-scale-unbalanced-flip"></i>BFP</span>
+                            <span class="medicion">
+                                <i class="fa-solid fa-hand-fist"></i>MME
+                                <span class="status-circle" [class]="getHealthStatus(smmKg, 'smmKg')"></span>
+                            </span>
+                        </div>
+
+                        <div class="parametro fade-in-up delay-4">
+                            <div class="dato-decimal">
+                                <span class="dato">{{ weight | number: '1.0-0' }}</span>
+                                <span class="decimal">{{ weight | number: '1.1-1' | slice: -1 }}</span>
+                            </div>
+                            <span class="medicion"><i class="fa-solid fa-weight-scale"></i>Peso</span>
                         </div>
                     </section>
                 </div>
             </div>
-            <div class="col-lg-6">
+
+            <!-- Bloque menú -->
+            <div class="col-lg-8 fade-in-up delay-4 ">
                 <div class="menu p-3">
                     <app-menu></app-menu>
                 </div>
             </div>
+            <div class="footerseparator"></div>
         </div>
     </div>
 </div>

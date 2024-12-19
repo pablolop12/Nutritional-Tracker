@@ -7,24 +7,32 @@ import java.time.LocalDateTime;
 @Table(name = "consumptions")
 public class Consumption {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+    @ManyToOne
+    @JoinColumn(
+        name = "user_id", 
+        nullable = false, 
+        foreignKey = @ForeignKey(name = "fk_consumptions_user")
+    )
+    private User user;
 
-	@ManyToOne
-	@JoinColumn(name = "food_id", nullable = false)
-	private Food food;
+    @ManyToOne
+    @JoinColumn(
+        name = "food_id", 
+        nullable = false, 
+        foreignKey = @ForeignKey(name = "fk_consumptions_foods", foreignKeyDefinition = "FOREIGN KEY (food_id) REFERENCES foods (id) ON DELETE CASCADE")
+    )
+    private Food food;
 
-	@Column(nullable = false)
-	private Double quantity;
+    @Column(nullable = false)
+    private Double quantity;
 
-	@Column(name = "consumed_at", nullable = false)
-	private LocalDateTime consumedAt;
-
+    @Column(name = "consumed_at", nullable = false)
+    private LocalDateTime consumedAt;
+    
 	// Getters y Setters
 	public Long getId() {
 		return id;

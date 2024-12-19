@@ -25,4 +25,9 @@ export class FoodService {
   createFood(food: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, food, { headers: this.getAuthHeaders() });
   }
+
+  deleteFood(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
+  }
+  
 }

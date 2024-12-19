@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDetailsService {
-  private apiUrl = 'http://localhost:8080/api/user-details'; // Ajusta según tu URL
+  private apiUrl = 'http://localhost:8080/api/users/me'; // Ajusta según tu URL
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +16,28 @@ export class UserDetailsService {
   }
 
   getUserDetailsByUserId(userId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/user/${userId}`, { headers: this.getAuthHeaders() });
+    return this.http.get<any>(`http://localhost:8080/api/user-details/user/${userId}`, { headers: this.getAuthHeaders() });
   }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get<any>(this.apiUrl, { headers: this.getAuthHeaders() });
+  }
+
+  updateUserField(data: any): Observable<any> {
+    return this.http.put<any>(
+      'http://localhost:8080/api/user-details/update',
+      data,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
+  updateUserDetails(data: any, resetMacros: boolean = false): Observable<any> {
+    const params = resetMacros ? '?resetMacros=true' : '';
+    return this.http.put<any>(`http://localhost:8080/api/user-details/update${params}`, data);
+  }
+  
+  
+  
+  
+  
 }

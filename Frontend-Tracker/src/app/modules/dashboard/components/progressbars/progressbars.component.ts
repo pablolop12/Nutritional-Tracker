@@ -50,6 +50,7 @@ export class ProgressbarsComponent implements OnInit {
   loadConsumptions() {
     this.consumptionService.getConsumptionsByUser(this.userId).subscribe(
       (consumptions) => {
+        console.log('Consumptions recibidos:', consumptions); // Depuración
         this.calculateNutrients(consumptions);
       },
       (error) => {
@@ -57,24 +58,32 @@ export class ProgressbarsComponent implements OnInit {
       }
     );
   }
+  
 
   calculateNutrients(consumptions: any[]) {
     const today = moment().startOf('day');
-
+  
     consumptions.forEach(consumption => {
       const consumedAt = moment(consumption.consumedAt);
+  
       if (consumedAt.isSame(today, 'day')) {
-        this.consumedNutrients.calories += (consumption.calories / 100) * consumption.quantity;
-        this.consumedNutrients.fats += (consumption.fats / 100) * consumption.quantity;
-        this.consumedNutrients.proteins += (consumption.proteins / 100) * consumption.quantity;
-        this.consumedNutrients.carbs += (consumption.carbs / 100) * consumption.quantity;
-        this.consumedNutrients.saturatedFats += (consumption.saturatedFats / 100) * consumption.quantity;
-        this.consumedNutrients.sugars += (consumption.sugars / 100) * consumption.quantity;
+        // Verifica si el producto es unitBased
+        const factor = consumption.unitBased
+          ? consumption.quantity // Si es unitBased, toma la cantidad directamente
+          : consumption.quantity / 100; // Si es en gramos, aplica regla de tres
+  
+        this.consumedNutrients.calories += consumption.calories * factor;
+        this.consumedNutrients.fats += consumption.fats * factor;
+        this.consumedNutrients.proteins += consumption.proteins * factor;
+        this.consumedNutrients.carbs += consumption.carbs * factor;
+        this.consumedNutrients.saturatedFats += consumption.saturatedFats * factor;
+        this.consumedNutrients.sugars += consumption.sugars * factor;
       }
     });
-
+  
     console.log('Nutrientes consumidos hoy:', this.consumedNutrients);
   }
+  
 
   getUserIdFromToken(): number {
     if (typeof window !== 'undefined' && localStorage.getItem('token')) {

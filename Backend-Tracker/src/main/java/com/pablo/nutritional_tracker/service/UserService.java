@@ -44,9 +44,9 @@ public class UserService {
         return findUserDetailsByUser(user).isPresent();
     }
     
- // Agrega este método
     public Optional<UserDetails> findUserDetailsByEmail(String email) {
         Optional<User> userOptional = userRepository.findByEmail(email);
-        return userOptional.flatMap(user -> userDetailsRepository.findByUser(user));
+        return userOptional.flatMap(user -> userDetailsRepository.findByUserId(user.getId()));
     }
+
 }

@@ -70,6 +70,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     if (this.welcomeForm.valid && this.userId !== null) {
       const payload = {
         ...this.welcomeForm.value,

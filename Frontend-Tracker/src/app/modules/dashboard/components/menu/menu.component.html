@@ -1,26 +1,82 @@
 <div class="menu-content">
-  <div class="input-container">
-    <i class="fa-solid fa-magnifying-glass icon"></i>
-    <input placeholder="Buscar un alimento ...">
+  <div class="menuHead d-flex justify-content-between align-items-center">
+    <div class="input-container w-100 me-2">
+      <i class="fa-solid fa-magnifying-glass icon"></i>
+      <input placeholder="Buscar un alimento ..." (input)="filterFoodsByName($event)">
+    </div>
+    <div class="d-flex">
+      <div (click)="toggleEditMode()" style="cursor: pointer;"><i class="icono fa-solid fa-pen-to-square me-2"></i>
+      </div>
+      <div routerLink="/food/new" style="cursor: pointer;"><i class="icono fa-solid fa-plus"></i></div>
+    </div>
   </div>
-  <div class="filtros">
-    <div class="filter"><i class="fa-solid fa-drumstick-bite me-1"></i> Carnes</div>
-    <div class="filter"><i class="fa-solid fa-fish me-1"></i> Pescados</div>
-    <div class="filter"><i class="fa-solid fa-wheat-awn me-1"></i> Hidratos</div>
-    <div class="filter"><i class="fa-solid fa-carrot me-1"></i> Vegetales</div>
-    <div class="filter"><i class="fa-solid fa-apple-alt me-1"></i> Frutas</div>
-    <div class="filter"><i class="fa-solid fa-cheese me-1"></i> Lácteos</div>
+  <div class="filtros mt-2">
+    <div class="filter" [class.selected]="selectedFilter === 'Carne'" (click)="filterFoodsByType('Carne')">
+      <i class="fa-solid fa-drumstick-bite me-1"></i> Carnes
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Pescado'" (click)="filterFoodsByType('Pescado')">
+      <i class="fa-solid fa-fish me-1"></i> Pescados
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Vegetal'" (click)="filterFoodsByType('Vegetal')">
+      <i class="fa-solid fa-carrot me-1"></i> Vegetales
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Fruta'" (click)="filterFoodsByType('Fruta')">
+      <i class="fa-solid fa-apple-alt me-1"></i> Frutas
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Hidrato'" (click)="filterFoodsByType('Hidrato')">
+      <i class="fa-solid fa-wheat-awn me-1"></i> Hidratos
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Lacteo'" (click)="filterFoodsByType('Lacteo')">
+      <i class="fa-solid fa-cheese me-1"></i> Lácteos
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Pan'" (click)="filterFoodsByType('Pan')">
+      <i class="fa-solid fa-bread-slice me-1"></i> Pan
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Otros'" (click)="filterFoodsByType('Otros')">
+      <i class="fa-solid fa-ellipsis-h me-1"></i> Otros
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === ''" (click)="filterFoodsByType('')">
+      <i class="fa-solid fa-list"></i> Todos
+    </div>
   </div>
 
-  <div>
-    <div *ngFor="let item of foodItems" class="food-item" (click)="onFoodItemClick(item)">
+
+
+
+  <!-- LISTA DE COMIDAS EN CUADRÍCULA -->
+  <div *ngIf="filteredFoodItems.length === 0" class="no-items-message mt-3">
+    <p class="text-center" style="opacity: 0.8;">No se han encontrado comidas relacionadas con este filtro.</p>
+  </div>
+
+  <div class="listaComida mt-3">
+    <div *ngFor="let item of filteredFoodItems" class="food-item" (click)="onFoodItemClick(item)">
       <div class="food-item-content">
         <img [src]="item.imageUrl" alt="{{ item.name }}" class="food-item-image">
         <div class="food-item-details">
           <h3>{{ item.name }}</h3>
         </div>
+        <!-- Icono de eliminar con animación -->
+        <div *ngIf="isEditMode" class="delete-icon" (click)="deleteFood(item.id, $event)">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        
       </div>
     </div>
   </div>
 
+
+
+<!-- Modal en tu componente -->
+<div #modal class="modal-backdrop" *ngIf="showModal">
+  <div class="modal-container">
+    <h3>Agregar {{ selectedFood?.name }}</h3>
+    <label for="quantity">
+      Introduce la cantidad en {{ selectedFood?.unitBased ? 'unidades' : 'gramos' }}:
+    </label>
+    <input type="number" id="quantity" [(ngModel)]="inputQuantity" min="1" placeholder="Ej: 150">
+    <div class="modal-actions">
+      <button class="btn btn-primary" (click)="confirmConsumption()">Agregar</button>
+      <button class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
 </div>

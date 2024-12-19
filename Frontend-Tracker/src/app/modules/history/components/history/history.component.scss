@@ -1,0 +1,33 @@
+.container {
+    min-height: calc(100vh - 144px);
+    padding: 0px !important;
+}
+
+.header{
+    padding-inline: 12px;
+}
+
+.cardConsumption {
+
+    width: 100%;
+    padding: 12px;
+}
+
+.infoHistorial {
+    border: 1px solid #00000038;
+    border-radius: 9px;
+    padding: 8px;
+    width: 100%;
+
+}
+
+span{
+    opacity: 0.8;
+}
+
+.buttonP {
+    border: 1px solid #00000038;
+    border-radius: 9px;
+    padding: 2px 10px;
+    cursor: pointer;
+  }

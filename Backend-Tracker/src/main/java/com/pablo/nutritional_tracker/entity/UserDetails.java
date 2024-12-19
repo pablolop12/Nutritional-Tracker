@@ -3,6 +3,9 @@ package com.pablo.nutritional_tracker.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
@@ -13,6 +16,7 @@ public class UserDetails {
 
 	@OneToOne
 	@JoinColumn(name = "user_id", nullable = false)
+	@JsonIgnore
 	private User user;
 
 	@Column(nullable = false)
@@ -39,22 +43,22 @@ public class UserDetails {
 	@Column(name = "activity_level", nullable = false)
 	private ActivityLevel activityLevel; // Nuevo nivel de actividad
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer calories;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer proteins;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer fats;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer carbs;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer saturatedFats; // Nuevo campo para grasas saturadas
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer sugars; // Nuevo campo para azúcares
 
 	// Getters y Setters

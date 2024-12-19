@@ -1,12 +1,16 @@
 
 
 h1 {
-    font-size: 80px;
+    font-size: 90px;
     text-align: center;
     font-weight: 800;
-    max-width: 800px;
-    line-height: 70px;
+    max-width: 880px;
+    line-height: 80px;
     color: #000000;
+
+    span{
+        color: #353535;
+    }
 }
 
 .registro {

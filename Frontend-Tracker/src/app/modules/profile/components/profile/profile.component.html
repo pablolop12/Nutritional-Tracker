@@ -1,0 +1,95 @@
+<div class="container">
+
+
+  <div class="header mt-4">
+    <div class="d-flex">
+      <div class="buttonP me-2" routerLink="/dashboard">
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+
+    </div>
+  </div>
+  <div class="profile-container">
+
+    <div class="profile mt-2">
+
+      <div *ngIf="user; else loading">
+        <!-- Información Personal -->
+        <div class="profile-info">
+          <span class="form1Top"><i class="fa-solid fa-user me-2"></i>Identificación de usuario</span>
+          <p class="mt-3"><strong>Nombre:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Sexo:</strong> {{ user.sex }}</p>
+          <p><strong>Edad:</strong> {{ user.birthdateFormatted }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="profile mt-3">
+      <span class="form1Top"><i class="fa-solid fa-child-reaching me-2"></i>Datos corporales</span>
+      <!-- Información Anatómica -->
+      <div class="profile-stats mt-3">
+        <p *ngFor="let field of ['weight', 'height', 'bfp']">
+          <strong>{{ field | titlecase }}:</strong>
+          <span *ngIf="editableField !== field">{{ user[field] }}</span>
+          <input *ngIf="editableField === field" [(ngModel)]="tempValue" />
+          <button *ngIf="editableField !== field" (click)="startEdit(field)">Editar</button>
+          <button *ngIf="editableField === field" (click)="saveEdit()">Guardar</button>
+          <button *ngIf="editableField === field" (click)="cancelEdit()">Cancelar</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="profile mt-3">
+      <span class="form1Top"><i class="fa-solid fa-dna me-2"></i>Objetivos y macronutientes</span>
+      <div class="profile-stats mt-3">
+        <p>
+          <strong>Nivel de Actividad:</strong>
+          <span *ngIf="editableField !== 'activityLevel'">{{ user.activityLevelFormatted }}</span>
+          <select *ngIf="editableField === 'activityLevel'" [(ngModel)]="tempValue">
+            <option *ngFor="let level of activityLevelOptions" [value]="level.value">{{ level.label }}</option>
+          </select>
+          <button *ngIf="editableField !== 'activityLevel'" (click)="startEdit('activityLevel')">Editar</button>
+          <button *ngIf="editableField === 'activityLevel'" (click)="saveEdit()">Guardar</button>
+          <button *ngIf="editableField === 'activityLevel'" (click)="cancelEdit()">Cancelar</button>
+        </p>
+
+        <p>
+          <strong>Objetivo:</strong>
+          <span *ngIf="editableField !== 'goal'">{{ user.goalFormatted }}</span>
+          <select *ngIf="editableField === 'goal'" [(ngModel)]="tempValue">
+            <option *ngFor="let goal of goalOptions" [value]="goal.value">{{ goal.label }}</option>
+          </select>
+          <button *ngIf="editableField !== 'goal'" (click)="startEdit('goal')">Editar</button>
+          <button *ngIf="editableField === 'goal'" (click)="saveEdit()">Guardar</button>
+          <button *ngIf="editableField === 'goal'" (click)="cancelEdit()">Cancelar</button>
+        </p>
+
+        <!-- Campos Macros -->
+        <div *ngFor="let field of ['calories', 'proteins', 'carbs', 'fats', 'saturatedFats', 'sugars']">
+          <p>
+            <strong>{{ field | titlecase }}:</strong>
+            <span *ngIf="editableField !== field">{{ user[field] }}</span>
+            <input *ngIf="editableField === field" type="number" [(ngModel)]="tempValue" />
+            <button *ngIf="editableField !== field" (click)="startEdit(field)">Editar</button>
+            <button *ngIf="editableField === field" (click)="saveEdit()">Guardar</button>
+            <button *ngIf="editableField === field" (click)="cancelEdit()">Cancelar</button>
+
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+    <button (click)="resetMacros()" class="reset-button mt-3">Restablecer Macros Objetivo</button>
+    <ng-template #loading>
+      <p>Cargando datos del perfil...</p>
+    </ng-template>
+  </div>
+
+
+
+
+
+</div>

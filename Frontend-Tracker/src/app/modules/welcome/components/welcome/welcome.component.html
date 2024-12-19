@@ -1,7 +1,7 @@
 <div class="login-page">
   <div class="login-container">
     <h1>Empecemos</h1>
-    <h2>Rellena los siguientes datos para completar tu perfil y personalizar tus objetivos</h2>
+    <h2>Rellena los siguientes datos para completar tu perfil y personalizar tus macros objetivos de forma aproximada</h2>
     <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
       <!-- Paso 1: Pregunta Sexo y Fecha de Nacimiento -->
       <div *ngIf="currentStep === 1" class="step-container">

@@ -94,6 +94,28 @@
 }
 
 ::selection {
-  color: red !important;
-  background: yellow;
+  color: white;
+  background: rgba(26, 26, 26, 0.788);
+}
+
+/* Estilos de scrollbar */
+::-webkit-scrollbar {
+  widht: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(224, 224, 224);
+  border-radius: 50px
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000cc;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  /* Para transiciones suaves */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #1d1d1dcc;
+  border-radius: 50px
 }

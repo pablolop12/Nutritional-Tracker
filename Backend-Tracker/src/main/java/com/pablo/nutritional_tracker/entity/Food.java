@@ -127,7 +127,7 @@ public class Food {
     }
 
     public Boolean getUnitBased() {
-        return unitBased;
+    	return unitBased != null ? unitBased : false;
     }
 
     public void setUnitBased(Boolean unitBased) {

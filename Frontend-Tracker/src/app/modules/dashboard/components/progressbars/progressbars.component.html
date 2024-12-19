@@ -1,19 +1,78 @@
 <div *ngIf="userDetails">
 
-
-  <div *ngFor="let macro of ['calories', 'proteins', 'carbs', 'fats', 'saturatedFats', 'sugars'] " class="macro-row d-flex align-items-center mb-4">
-    <p class="macro-name m-0">{{ macro | titlecase }}</p>
-
+  <!-- calories  -->
+  <div class="macro-row d-flex align-items-center mb-4">
+    <p class="macro-name m-0">Calorías</p>
     <div class="progress">
       <div class="progress-bar" role="progressbar"
-        [style.width.%]="(consumedNutrients[macro] / userDetails[macro]) * 100"
-        [attr.aria-valuenow]="consumedNutrients[macro]" [attr.aria-valuemin]="0"
-        [attr.aria-valuemax]="userDetails[macro]">
+        [style.width.%]="(consumedNutrients['calories'] / userDetails['calories']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['calories']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['calories']">
       </div>
     </div>
-
-    <p class="macro-values m-0">{{ consumedNutrients[macro] | number:'1.0-0' }} / {{ userDetails[macro] }} g</p>
-</div>
+    <p class="macro-values m-0">{{ consumedNutrients['calories'] | number:'1.0-0' }} / {{ userDetails['calories']  }}</p>
+  </div>
+  <!-- proteins -->
+  <div class="macro-row d-flex align-items-center mb-4">
+    <p class="macro-name m-0">Proteinas</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+        [style.width.%]="(consumedNutrients['proteins'] / userDetails['proteins']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['proteins']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['proteins']">
+      </div>
+    </div>
+    <p class="macro-values m-0">{{ consumedNutrients['proteins'] | number:'1.0-0' }} / {{ userDetails['proteins'] }}g</p>
+  </div>
+  <!-- carbs -->
+  <div class="macro-row d-flex align-items-center mb-4">
+    <p class="macro-name m-0">Hidratos</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+        [style.width.%]="(consumedNutrients['carbs'] / userDetails['carbs']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['carbs']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['carbs']">
+      </div>
+    </div>
+    <p class="macro-values m-0">{{ consumedNutrients['carbs'] | number:'1.0-0' }} / {{ userDetails['carbs'] }}g</p>
+  </div>
+  <!-- fats -->
+  <div class="macro-row d-flex align-items-center mb-4">
+    <p class="macro-name m-0">Grasas</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+        [style.width.%]="(consumedNutrients['fats'] / userDetails['fats']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['fats']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['fats']">
+      </div>
+    </div>
+    <p class="macro-values m-0">{{ consumedNutrients['fats'] | number:'1.0-0' }} / {{ userDetails['fats'] }}g</p>
+  </div>
+  <!-- saturatedFats -->
+  <div class="macro-row d-flex align-items-center">
+    <p class="macro-name m-0">Grasas S.</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+        [style.width.%]="(consumedNutrients['saturatedFats'] / userDetails['saturatedFats']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['saturatedFats']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['saturatedFats']">
+      </div>
+    </div>
+    <p class="macro-values m-0">{{ consumedNutrients['saturatedFats'] | number:'1.0-0' }} / 0{{ userDetails['saturatedFats'] }}g</p>
+  </div>
+  <!-- sugars 
+  <div class="macro-row d-flex align-items-center">
+    <p class="macro-name m-0">Azúcares</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+        [style.width.%]="(consumedNutrients['sugars'] / userDetails['sugars']) * 100"
+        [attr.aria-valuenow]="consumedNutrients['sugars']" [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="userDetails['sugars']">
+      </div>
+    </div>
+    <p class="macro-values m-0">{{ consumedNutrients['sugars'] | number:'1.0-0' }} / 0{{ userDetails['sugars'] }}g</p>
+  </div>
+-->
 
 
 

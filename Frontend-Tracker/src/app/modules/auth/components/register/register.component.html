@@ -1,40 +1,70 @@
+<div class="login-page">
+  <div class="login-container" style="margin-top: -80px;">
+    <h1>Bienvenido</h1>
 
-
-  <div class="login-page">
-    <div class="login-container">
-      <h1>Bienvenido</h1>
-      
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="input-container">
-          <i class="icon fa-regular fa-circle-user"></i>
-          <input id="firstName" formControlName="firstName" placeholder="Nombre" />
-        </div>
-        <div class="input-container mt-3">
-          <i class="icon fa-regular fa-circle-user"></i>
-          <input id="lastName" formControlName="lastName" placeholder="Apellidos" />
-        </div>
-        <div class="input-container mt-3">
-          <i class="icon fa-solid fa-at"></i>
-          <input id="email" formControlName="email" placeholder="Correo electrónico" />
-        </div>
-        <div class="input-container mt-3">
-          <i class="icon fa-solid fa-lock"></i>
-          <input id="password" type="password" formControlName="password" placeholder="Contraseña" />
-        </div>
-        <div class="input-container mt-3">
-          <i class="icon fa-solid fa-lock"></i>
-          <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Repita su contraseña" />
-        </div>
-        <div class="text-center">
-          <button type="submit" class="inicio
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <i class="icon fa-regular fa-circle-user"></i>
+        <input id="firstName" formControlName="firstName" placeholder="Nombre" />
+      </div>
+      <div class="input-container mt-3">
+        <i class="icon fa-regular fa-circle-user"></i>
+        <input id="lastName" formControlName="lastName" placeholder="Apellidos" />
+      </div>
+      <div class="input-container mt-3">
+        <i class="icon fa-solid fa-at"></i>
+        <input id="email" formControlName="email" placeholder="Correo electrónico" />
+      </div>
+      <div class="input-container mt-3">
+        <i class="icon fa-solid fa-lock"></i>
+        <input id="password" type="password" formControlName="password" placeholder="Contraseña" />
+      </div>
+      <div class="input-container mt-3">
+        <i class="icon fa-solid fa-lock"></i>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword"
+          placeholder="Repita su contraseña" />
+      </div>
+      <div class="text-center">
+        <button type="submit" class="inicio
            mt-5 shadow"><i class="fa-regular fa-user" style="margin-inline-end: 10px;"></i>Darse de alta<i
-              class="bi bi-chevron-right flecha"></i></button>
-        </div>
-      </form>
+            class="bi bi-chevron-right flecha"></i></button>
+      </div>
+    </form>
+
+    <div class="text-center mt-3">
+      <a class="text underB" href="/auth/login">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+  </div>
+
+  <!-- Estructura toast feedback -->
+  <div class="position-fixed" style="bottom: 60px; right: 20px; z-index: 11;">
+    <div 
+      *ngIf="toastMessage" 
+      class="toast show fade align-items-center toast-entry" 
+      role="alert" 
+      aria-live="assertive" 
+      aria-atomic="true" 
+      data-bs-delay="5000">
+      
+      <!-- Encabezado del toast -->
+      <div class="toast-header">
+        <i class="{{ toastIcon }}"></i>
+        <strong class="me-auto">{{ toastTitle }}</strong>
+        <small class="text-body-secondary">{{ toastTimestamp }}</small>
+        <button 
+          type="button" 
+          class="btn-close" 
+          data-bs-dismiss="toast" 
+          aria-label="Close" 
+          (click)="clearToast()"></button>
+      </div>
   
-      <div class="text-center mt-3">
-        <a class="text underB" href="/auth/login">¿Ya tienes cuenta? Inicia sesión</a>
+      <!-- Cuerpo del toast -->
+      <div class="toast-body">
+        {{ toastMessage }}
       </div>
     </div>
   </div>
   
+
+</div>

@@ -13,6 +13,8 @@ import java.time.Period;
 public class NutritionCalculatorService {
 
     public void calculateDailyNeeds(UserDetails userDetails) {
+        System.out.println("Calculando necesidades nutricionales para: " + userDetails);
+
         int age = calculateAge(userDetails.getBirthDate());
         double bmr = calculateBMR(userDetails.getWeight(), userDetails.getHeight(), age, userDetails.getSexo());
         double dailyCalories = adjustCaloriesForGoalAndActivity(bmr, userDetails.getGoal(), userDetails.getActivityLevel());
@@ -23,6 +25,8 @@ public class NutritionCalculatorService {
         userDetails.setCarbs(calculateCarbs(dailyCalories, userDetails.getProteins(), userDetails.getFats()));
         userDetails.setSaturatedFats(calculateSaturatedFats(userDetails.getFats()));
         userDetails.setSugars(calculateSugars(dailyCalories));
+        System.out.println("Necesidades calculadas: " + userDetails);
+
     }
 
     private int calculateAge(LocalDate birthDate) {

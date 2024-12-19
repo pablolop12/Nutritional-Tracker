@@ -1,61 +1,88 @@
-<div class="food-form-container">
-    <h2>Crear Nueva Comida</h2>
-    
+<div class="container">
+  <div class="header mt-4">
+    <div class="d-flex">
+      <div class="buttonP me-2" routerLink="/dashboard">
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+      
+    </div>
+  </div>
+  <div class="food-form-container">
+
     <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input id="name" formControlName="name" type="text" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="type">Tipo</label>
-        <select id="type" formControlName="type" class="form-control">
-          <option value="">Selecciona un tipo</option>
-          <option value="Carne">Carne</option>
-          <option value="Pescado">Pescado</option>
-          <option value="Hidrato">Hidrato</option>
-          <option value="Vegetal">Vegetal</option>
-          <option value="Fruta">Fruta</option>
-          <option value="Lacteo">Lácteo</option>
-          <option value="Pan">Pan</option>
-          <option value="Otros">Otros</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="caloriesPer100g">Calorías por 100g</label>
-        <input id="caloriesPer100g" formControlName="caloriesPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="proteinsPer100g">Proteínas por 100g</label>
-        <input id="proteinsPer100g" formControlName="proteinsPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="fatsPer100g">Grasas por 100g</label>
-        <input id="fatsPer100g" formControlName="fatsPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="carbsPer100g">Carbohidratos por 100g</label>
-        <input id="carbsPer100g" formControlName="carbsPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="saturatedFatsPer100g">Grasas Saturadas por 100g</label>
-        <input id="saturatedFatsPer100g" formControlName="saturatedFatsPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="sugarsPer100g">Azúcares por 100g</label>
-        <input id="sugarsPer100g" formControlName="sugarsPer100g" type="number" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="unitBased">Basado en unidad</label>
-        <input id="unitBased" formControlName="unitBased" type="checkbox" />
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">URL de la Imagen</label>
-        <input id="imageUrl" formControlName="imageUrl" type="text" class="form-control" />
-      </div>
+      
+      <div class="form1 mt-2">
+        <div class="form-group mt-4 mb-2">
+          <label for="name" >Nombre del alimento</label>
+          <input id="name" placeholder="Alcachofas con lacón" formControlName="name" type="text" class="form-control" />
+        </div>
   
-      <button type="submit" class="btn btn-primary">Crear Comida</button>
+        <div class="row">
+          <div class="col form-group">
+            <label for="type">Tipo</label>
+            <select id="type" formControlName="type" class="form-control">
+              <option value="">Selecciona un tipo</option>
+              <option value="Carne">Carne</option>
+              <option value="Pescado">Pescado</option>
+              <option value="Hidrato">Hidrato</option>
+              <option value="Vegetal">Vegetal</option>
+              <option value="Fruta">Fruta</option>
+              <option value="Lacteo">Lácteo</option>
+              <option value="Pan">Pan</option>
+              <option value="Otros">Otros</option>
+            </select>
+          </div>
+          <div class="col form-group">
+            <label for="unitBased">Basado en unidad </label><br>
+            <input id="unitBased" class="form-check-input" formControlName="unitBased" type="checkbox" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form1 mt-3">
+        <span class="form1Top"><i class="fa-solid fa-seedling me-2"></i>Valores nutricionales</span>
+        <div class="row mt-4 mb-2">
+          <div class="col form-group">
+            <label for="caloriesPer100g">Calorías {{ macroLabelSuffix }}</label>
+            <input id="caloriesPer100g" formControlName="caloriesPer100g" type="number" class="form-control" />
+          </div>
+          <div class="col form-group">
+            <label for="proteinsPer100g">Proteínas {{ macroLabelSuffix }}</label>
+            <input id="proteinsPer100g" formControlName="proteinsPer100g" type="number" class="form-control" />
+          </div>
+        </div>
+  
+        <div class="row mb-2">
+          <div class="col form-group">
+            <label for="fatsPer100g">Grasas {{ macroLabelSuffix }}</label>
+            <input id="fatsPer100g" formControlName="fatsPer100g" type="number" class="form-control" />
+          </div>
+          <div class="col form-group">
+            <label for="carbsPer100g">Carbohidratos {{ macroLabelSuffix }}</label>
+            <input id="carbsPer100g" formControlName="carbsPer100g" type="number" class="form-control" />
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col form-group">
+            <label for="saturatedFatsPer100g">Grasas Sat {{ macroLabelSuffix }}</label>
+            <input id="saturatedFatsPer100g" formControlName="saturatedFatsPer100g" type="number" class="form-control" />
+          </div>
+          <div class="col form-group">
+            <label for="sugarsPer100g">Azúcares {{ macroLabelSuffix }}</label>
+            <input id="sugarsPer100g" formControlName="sugarsPer100g" type="number" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="imageUrl">URL de la Imagen (Opcional)</label>
+        <input placeholder="https://www.url ..." id="imageUrl" formControlName="imageUrl" type="text" class="form-control" />
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3">Crear Comida</button>
     </form>
-  
+
     <div *ngIf="successMessage" class="alert alert-success mt-3">
       {{ successMessage }}
     </div>
@@ -63,4 +90,4 @@
       {{ errorMessage }}
     </div>
   </div>
-  
+</div>

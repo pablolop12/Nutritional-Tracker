@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { FoodService } from '../../../../services/food.service';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-food-form',
   templateUrl: './food-form.component.html',
-  styleUrls: ['./food-form.component.scss'] // Corrige 'styleUrl' a 'styleUrls'
+  styleUrls: ['./food-form.component.scss'] 
 })
 export class FoodFormComponent {
   foodForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';
 
-  constructor(private foodService: FoodService, private fb: FormBuilder) {
-    // Crear el formulario con validadores
+  constructor(private foodService: FoodService, private fb: FormBuilder, private router: Router) {
     this.foodForm = this.fb.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
@@ -28,13 +28,19 @@ export class FoodFormComponent {
     });
   }
 
+  // Getter que devuelve el texto de los labels
+  get macroLabelSuffix(): string {
+    return this.foodForm.get('unitBased')?.value ? '/ unidad' : '/ 100g';
+  }
+
   onSubmit(): void {
     if (this.foodForm.valid) {
       this.foodService.createFood(this.foodForm.value).subscribe(
         (response) => {
           this.successMessage = 'Comida creada con éxito!';
           this.errorMessage = '';
-          this.foodForm.reset(); // Reiniciar el formulario después de la creación
+          this.router.navigate(['/dashboard']);
+          this.foodForm.reset();
         },
         (error) => {
           this.errorMessage = 'Error al crear la comida. Inténtalo de nuevo.';

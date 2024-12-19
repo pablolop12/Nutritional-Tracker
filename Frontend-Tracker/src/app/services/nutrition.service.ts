@@ -13,4 +13,6 @@ export class NutritionService {
   calculateMacros(details: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/calculate`, details);
   }
+
+  
 }

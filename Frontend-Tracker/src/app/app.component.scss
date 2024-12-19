@@ -1,0 +1,8 @@
+body, html {
+    overflow: visible;
+  }
+
+  .menu-content {
+    position: initial !important; /* Deshabilita posicionamiento heredado */
+    overflow: visible !important;
+  }

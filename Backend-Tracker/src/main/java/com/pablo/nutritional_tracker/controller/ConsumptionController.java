@@ -88,6 +88,8 @@ public class ConsumptionController {
             public final Double carbs = consumption.getFood().getCarbsPer100g();
             public final Double saturatedFats = consumption.getFood().getSaturatedFatsPer100g();
             public final Double sugars = consumption.getFood().getSugarsPer100g();
+            public final Boolean unitBased = consumption.getFood().getUnitBased(); // Incluido unitBased
         };
     }
+
 }

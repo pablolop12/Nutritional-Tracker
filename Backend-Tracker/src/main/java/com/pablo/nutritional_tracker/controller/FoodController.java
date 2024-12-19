@@ -96,6 +96,7 @@ public class FoodController {
             public final double sugarsPer100g = food.getSugarsPer100g();
             public final String type = food.getType();
             public final String imageUrl = food.getImageUrl();
+            public final Boolean unitBased = food.getUnitBased(); // Incluido unitBased
         };
     }
 }

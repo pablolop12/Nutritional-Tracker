@@ -1,23 +1,95 @@
+.container-wrapper{
+  overflow: hidden;
+}
+
+.buttonP {
+  border: 1px solid #00000038;
+  border-radius: 9px;
+  padding: 2px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Para transiciones suaves */
+}
+
+.buttonP:hover {
+  border-color: black;
+}
+
+.progressbars {
+  border: 1px solid #00000038;
+  border-radius: 9px;
+  padding: 16px;
+
+
+}
+
+
 .container-wrapper {
 
+  .colheight {
+    min-height: calc(100vh - 144px);
+  }
+
+
   .estadisticas {
-    padding-top: 20px;
+
 
     .parametro-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 16px;
+
+      @media (max-width: 766px) {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columnas */
+        gap: 8px;
+        /* Ajuste del espacio */
+
+        .dato {
+          font-size: 33px;
+        }
+
+        .decimal {
+          font-size: 18px;
+        }
+
+        .medicion {
+          font-size: 11px;
+          padding: none;
+          position: absolute;
+          top: 3px;
+
+          i {
+            margin-right: 4px;
+          }
+        }
+
+        .status-circle {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          margin-left: 0px;
+        }
+      }
+
+
     }
   }
 
   .menu {
-    height: 100%;
-    border: 2px solid #00000051;
+    display: flex;
+    flex-direction: column;
+    /* Organiza el contenido verticalmente */
+    overflow: hidden;
+    /* Evita que el contenido interno empuje el tamaño */
+    border: 1px solid #00000038;
     border-radius: 9px;
+    padding-bottom: 8px;
+    height: 420px;
   }
 
   .parametro {
-    border: 2px solid #00000051;
+    border: 1px solid #00000038;
     background-color: transparent;
     position: relative;
     text-align: center;
@@ -57,17 +129,96 @@
 
     }
 
-    .medicion::after{
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: -6px;
-      transform: translateY(-50%);
-      width: 10px; /* Tamaño de la bola */
-      height: 10px; /* Tamaño de la bola */
-      background-color: red; /* Color de la bola */
-      border-radius: 50%; /* Hace la bola redonda */
-    }
+
   }
 
+}
+
+.status-circle {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase base para animar */
+.fade-in-up {
+  opacity: 0;
+  /* Oculto inicialmente */
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Secuencia de animación (opcional para diferentes elementos) */
+.fade-in-up.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.fade-in-up.delay-2 {
+  animation-delay: 0.3s;
+}
+
+.fade-in-up.delay-3 {
+  animation-delay: 0.5s;
+}
+
+.fade-in-up.delay-4 {
+  animation-delay: 0.7s;
+}
+
+.footerseparator {
+  margin-top: 68px;
+}
+
+@media (max-width: 1199px) {
+  .menu {
+    height: 420px !important;
+    /* Altura para pantallas de 1199px o menos */
+  }
+}
+
+@media (max-width: 991px) {
+  .menu {
+    height: 414px !important;
+    /* Altura para pantallas de 1199px o menos */
+  }
+}
+
+@media (max-width: 1399px) {
+  .col-lg-4 {
+    flex: 0 0 100%;
+    /* Ocupar 100% del ancho */
+    max-width: 100%;
+  }
+
+  .col-lg-8 {
+    flex: 0 0 100%;
+    /* Ocupar 100% del ancho */
+    max-width: 100%;
+    padding-top: 16px;
+  }
 }

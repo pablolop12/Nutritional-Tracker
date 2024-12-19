@@ -1,10 +1,15 @@
 package com.pablo.nutritional_tracker.controller;
 
+import com.pablo.nutritional_tracker.entity.User;
 import com.pablo.nutritional_tracker.entity.UserDetails;
 import com.pablo.nutritional_tracker.service.UserDetailsService;
+import com.pablo.nutritional_tracker.service.UserService;
+import com.pablo.nutritional_tracker.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/nutrition")
@@ -13,14 +18,36 @@ public class NutritionController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/calculate")
-    public ResponseEntity<?> calculateAndSaveMacros(@RequestBody UserDetails userDetails) {
-        if (userDetails.getUser() == null || userDetails.getUser().getId() == null) {
-            return ResponseEntity.badRequest().body("UserDetails must have a valid User associated.");
-        }
+    @Autowired
+    private UserService userService;
 
-        // Usa el servicio para calcular y guardar
-        UserDetails updatedUserDetails = userDetailsService.saveUserDetails(userDetails);
-        return ResponseEntity.ok(updatedUserDetails);
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @PostMapping("/calculate")
+    public ResponseEntity<?> calculateAndSaveMacros(
+            @RequestHeader("Authorization") String token,
+            @RequestBody UserDetails userDetails) {
+
+        try {
+            // Extraer el email del token
+            String email = jwtTokenUtil.extractUsername(token.replace("Bearer ", ""));
+
+            // Buscar el usuario por email
+            Optional<User> userOptional = userService.findUserByEmail(email);
+
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                userDetails.setUser(user);
+
+                UserDetails updatedUserDetails = userDetailsService.saveUserDetails(userDetails);
+                return ResponseEntity.ok(updatedUserDetails);
+            } else {
+                return ResponseEntity.status(404).body("Usuario no encontrado.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al procesar la solicitud: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Error al procesar los datos: " + e.getMessage());
+        }
     }
 }
