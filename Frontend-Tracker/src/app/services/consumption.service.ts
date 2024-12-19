@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ConsumptionService {
 
-  private apiUrl = 'https://nutriweb-railway-deploy-repo.railway.internal/api/consumptions'; // Asegúrate de que la URL sea correcta
+  private apiUrl = 'https://nutriweb-railway-deploy-repo-production.up.railway.app/api/consumptions'; // Asegúrate de que la URL sea correcta
 
   constructor(private http: HttpClient) { }
 

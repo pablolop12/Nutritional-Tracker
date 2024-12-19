@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FoodService {
-  private apiUrl = 'https://nutriweb-railway-deploy-repo.railway.internal/api/foods';
+  private apiUrl = 'https://nutriweb-railway-deploy-repo-production.up.railway.app/api/foods';
 
   constructor(private http: HttpClient) {}
 
