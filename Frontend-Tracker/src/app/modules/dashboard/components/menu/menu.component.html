@@ -33,7 +33,10 @@
       <i class="fa-solid fa-cheese me-1"></i> Lácteos
     </div>
     <div class="filter" [class.selected]="selectedFilter === 'Suplemento'" (click)="filterFoodsByType('Pan')">
-      <i class="fa-solid fa-bread-slice me-1"></i> Suplementos
+      <i class="fa-solid fa-dna"></i> Suplementos
+    </div>
+    <div class="filter" [class.selected]="selectedFilter === 'Bebida'" (click)="filterFoodsByType('Pan')">
+      <i class="fa-solid fa-wine-glass"></i> Bebidas
     </div>
     <div class="filter" [class.selected]="selectedFilter === 'Otros'" (click)="filterFoodsByType('Otros')">
       <i class="fa-solid fa-ellipsis-h me-1"></i> Otros
