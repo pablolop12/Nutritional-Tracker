@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NutritionService {
-  private apiUrl = 'http://localhost:8080/api/nutrition'; // URL del backend para nutrición
+  private apiUrl = 'http://nutriweb-railway-deploy-repo.railway.internal/api/nutrition'; // URL del backend para nutrición
 
   constructor(private http: HttpClient) {}
 

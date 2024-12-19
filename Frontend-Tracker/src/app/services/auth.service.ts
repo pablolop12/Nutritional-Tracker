@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/users'; // URL del backend para autenticación
+  private apiUrl = 'http://nutriweb-railway-deploy-repo.railway.internal/api/users'; // URL del backend para autenticación
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 

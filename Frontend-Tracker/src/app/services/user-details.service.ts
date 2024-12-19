@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserDetailsService {
-  private apiUrl = 'http://localhost:8080/api/users/me'; // Ajusta según tu URL
+  private apiUrl = 'http://nutriweb-railway-deploy-repo.railway.internal/api/users/me'; // Ajusta según tu URL
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,7 @@ export class UserDetailsService {
   }
 
   getUserDetailsByUserId(userId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/api/user-details/user/${userId}`, { headers: this.getAuthHeaders() });
+    return this.http.get<any>(`http://nutriweb-railway-deploy-repo.railway.internal/api/user-details/user/${userId}`, { headers: this.getAuthHeaders() });
   }
 
   getCurrentUser(): Observable<any> {
@@ -25,7 +25,7 @@ export class UserDetailsService {
 
   updateUserField(data: any): Observable<any> {
     return this.http.put<any>(
-      'http://localhost:8080/api/user-details/update',
+      'http://nutriweb-railway-deploy-repo.railway.internal/api/user-details/update',
       data,
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -33,7 +33,7 @@ export class UserDetailsService {
 
   updateUserDetails(data: any, resetMacros: boolean = false): Observable<any> {
     const params = resetMacros ? '?resetMacros=true' : '';
-    return this.http.put<any>(`http://localhost:8080/api/user-details/update${params}`, data);
+    return this.http.put<any>(`http://nutriweb-railway-deploy-repo.railway.internal/api/user-details/update${params}`, data);
   }
   
   
